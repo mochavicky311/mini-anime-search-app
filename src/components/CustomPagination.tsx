@@ -14,15 +14,19 @@ export default function CustomPagination(props: PaginationProps) {
     const startItem = (pagination.current_page - 1) * pagination.items_per_page + 1;
     const endItem = Math.min(pagination.current_page * pagination.items_per_page, pagination.items_total);
 
-    console.log(pagination);
-
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
         props.onPageChange(page);
     };
 
     return (
         <Stack spacing={2} alignItems="center" sx={{ mt: 2 }}>
-            <Typography variant="body1">
+            <Typography
+                variant="body1"
+                sx={(theme) => ({
+                    color: theme.palette.text.secondary,
+                    fontWeight: theme.typography.fontWeightLight,
+                })}
+            >
                 Showing {startItem} - {endItem} of {pagination.items_total} items
             </Typography>
             <PaginationMui
@@ -35,6 +39,18 @@ export default function CustomPagination(props: PaginationProps) {
                 showLastButton
                 siblingCount={1}
                 boundaryCount={1}
+                sx={(theme) => ({
+                    '& .MuiPaginationItem-root': {
+                        color: theme.palette.text.primary,
+                        '&.Mui-selected': {
+                            backgroundColor: theme.palette.secondary.main,
+                            color: theme.palette.primary.contrastText,
+                        },
+                        '&:hover': {
+                            backgroundColor: theme.palette.primary.light,
+                        },
+                    },
+                })}
             />
         </Stack>
     );

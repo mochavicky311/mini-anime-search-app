@@ -44,6 +44,22 @@ export default function SearchBar(props: SearchBarProps) {
                         </InputAdornment>
                     ),
                 }}
+                sx={(theme) => ({
+                    '& .MuiOutlinedInput-root': {
+                        borderRadius: '32px',
+                        backgroundColor: theme.palette.background.default,
+                        color: theme.palette.text.primary,
+                    },
+                    '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: theme.palette.divider,
+                    },
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                        borderColor: theme.palette.primary.main,
+                    },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: theme.palette.primary.main,
+                    },
+                })}
             />
         </Box>
     );

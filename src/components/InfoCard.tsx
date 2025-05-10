@@ -12,12 +12,29 @@ interface InfoCardProps {
 }
 export default function InfoCard(props: InfoCardProps) {
     return (
-        <Card sx={{ width: 150, backgroundColor: props.color || 'white' }}>
-            <CardContent>
-                <Typography variant="h5" component="div" sx={{ textAlign: 'center', color: props.secondary_text_color || 'text.primary' }}>
+        <Card sx={{
+            width: 150,
+            backgroundColor: props.color || 'white',
+            borderRadius: '16px'
+        }}>
+            <CardContent sx={{ padding: '8px' }}>
+                <Typography
+                    variant="h4"
+                    component="div"
+                    sx={{
+                        textAlign: 'center',
+                        color: props.secondary_text_color || 'text.primary'
+                    }}
+                >
                     {props.primary_info}
                 </Typography>
-                <Typography variant="body2" sx={{ textAlign: 'center', color: props.secondary_text_color || 'text.secondary' }}>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        textAlign: 'center',
+                        color: props.secondary_text_color || 'text.secondary'
+                    }}
+                >
                     {props.secondary_info}
                 </Typography>
             </CardContent>

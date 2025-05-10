@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 export default function Footer() {
     return (
         <Box
-            className="footer"
             component="footer"
             sx={{
                 textAlign: 'center',
@@ -14,7 +13,7 @@ export default function Footer() {
                 color: 'text.secondary',
                 borderTop: '1px solid',
                 borderColor: 'divider',
-                height: '40px'
+                height: '50px'
             }}
         >
             <Typography variant="body2">

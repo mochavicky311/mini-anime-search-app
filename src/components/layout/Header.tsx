@@ -7,16 +7,26 @@ export default function Header() {
         <Box
             component="header"
             sx={{
-                height: '60px',
+                height: '80px',
                 backgroundColor: 'primary.main',
-                color: 'white',
+                color: 'primary.contrastText',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}
         >
-            <Typography variant="h6" component="div">
-                Anime Search App
+            <Box
+                component="img"
+                src="/logo192.png"
+                alt="Logo"
+                sx={(theme) => ({
+                    height: '40px',
+                    width: 'auto',
+                    marginRight: theme.spacing(1),
+                })}
+            />
+            <Typography variant="h3" component="div">
+                Mini Anime Search App
             </Typography>
         </Box>   
     );

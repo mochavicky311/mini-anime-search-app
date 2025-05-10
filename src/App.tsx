@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
@@ -7,6 +6,8 @@ import ErrorPage from './pages/ErrorPage';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import Box from '@mui/material/Box';
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { appTheme } from './themes/theme';
 
 const router = createBrowserRouter([
     {
@@ -27,25 +28,28 @@ const router = createBrowserRouter([
 ])
 function App() {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh'
-            }}
-        >
-            <Header />
+        <ThemeProvider theme={appTheme}>
+            <CssBaseline enableColorScheme />
             <Box
-                component="main"
                 sx={{
-                    flex: 1,
-                    padding: '1rem'
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '100vh'
                 }}
             >
-                <RouterProvider router={router} />
+                <Header />
+                <Box
+                    component="main"
+                    sx={{
+                        flex: 1,
+                        padding: '1rem'
+                    }}
+                >
+                    <RouterProvider router={router} />
+                </Box>
+                <Footer />
             </Box>
-            <Footer />
-        </Box>
+        </ThemeProvider>
     )
 }
 

@@ -20,32 +20,48 @@ export default function AnimeItem(props: AnimeItemProps) {
     return (
         <Grid size={{ xs:12, sm: 6, md: 4, lg: 3 }}>
             <Card
-                sx={{
-                    width: "100%",
+                sx={(theme) => ({
+                    width: '100%',
                     cursor: 'pointer',
-                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    transition: 'transform 0.3s, box-shadow 0.3s, background 0.3s',
                     '&:hover': {
                         transform: 'scale(1.05)',
-                        boxShadow: 6,
+                        boxShadow: theme.shadows[6]
                     },
-                }}
+                    borderRadius: theme.shape.borderRadius,
+                    overflow: 'hidden',
+                    boxShadow: theme.shadows[2],
+                    backgroundColor: theme.palette.background.default
+                })}
                 onClick={handleClick}
             >
                 <CardMedia
-                    sx={{ height: 280 }}
+                    sx={(theme) => ({
+                        height: 280,
+                        filter: 'brightness(0.9)',
+                        transition: 'filter 0.3s',
+                        '&:hover': {
+                            filter: 'brightness(1)',
+                        },
+                        borderRadius: theme.shape.borderRadius,
+                    })}
                     image={props.anime.image_url}
                     title={props.anime.title}
                 />
-                <CardContent sx={{ padding: 2 }}>
+                <CardContent
+                    sx={(theme) => ({
+                        padding: theme.spacing(1),
+                    })}
+                >
                     <Typography
                         variant="subtitle1"
-                        sx={{
-                            color: 'text.primary',
-                            fontWeight: 'bold',
+                        sx={(theme) => ({
+                            color: theme.palette.text.primary,
+                            fontWeight: theme.typography.fontWeightMedium,
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
-                        }}
+                        })}
                     >
                         {props.anime.title}
                     </Typography>
